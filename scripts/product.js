@@ -11,7 +11,7 @@ const container = document.getElementById('product-container');
 const variationState = { size: null, color: null };
 const qtyState = { qty: 1, max: 5, unitPrice: 0 };
 
-// Initialize cart badge
+// Initialize cart badge on page load
 updateCartBadge();
 
 if (!productId) {
@@ -179,16 +179,34 @@ function updateTotalPrice() {
 function setupCart(product) {
   const cartBtn = document.querySelector('.add-to-cart');
   cartBtn.addEventListener('click', () => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      image: document.getElementById('mainImage').src,
-      size: variationState.size,
-      color: variationState.color,
-      qty: qtyState.qty
-    });
+    if (qtyState.qty < 1) {
+      showToast("Quantity must be at least 1");
+      return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if product already exists (match by id + variation)
+    const existingIndex = cart.findIndex(item =>
+      item.id === product.id &&
+      item.size === variationState.size &&
+      item.color === variationState.color
+    );
+
+    if (existingIndex > -1) {
+      cart[existingIndex].qty = Number(cart[existingIndex].qty) + Number(qtyState.qty);
+    } else {
+      cart.push({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: document.getElementById('mainImage').src,
+        size: variationState.size,
+        color: variationState.color,
+        qty: Number(qtyState.qty)   // ✅ force numeric
+      });
+    }
+
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartBadge();
     showToast(`${product.title} added to cart!`);
@@ -204,7 +222,10 @@ function updateAddToCartState() {
 function updateCartBadge() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const badge = document.querySelector('.badge');
-  if (badge) badge.textContent = cart.length;
+  if (badge) {
+    const totalItems = cart.reduce((sum, item) => sum + Number(item.qty || 0), 0);
+    badge.textContent = totalItems;
+  }
 }
 
 function showToast(msg) {

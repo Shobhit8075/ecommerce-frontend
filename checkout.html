@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - ShopEasy</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo"><h2>ShopEasy</h2></div>
+    <nav class="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#product-grid">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar"><input type="text" placeholder="Search products..."></div>
+    <div class="cart">🛒 <span class="badge">0</span></div>
+    <div class="hamburger">☰</div>
+  </header>
+
+  <!-- Checkout Section -->
+  <section class="checkout-page">
+    <h1>Checkout</h1>
+
+    <!-- Order Summary -->
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      <p id="checkout-total">Total: $0.00</p>
+    </div>
+
+    <!-- Checkout Form -->
+    <form id="checkout-form" class="checkout-form">
+      <h2>Billing Details</h2>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required>
+
+      <label for="address">Shipping Address</label>
+      <textarea id="address" rows="3" required></textarea>
+
+      <label for="payment">Payment Method</label>
+      <select id="payment" required>
+        <option value="" disabled selected>Select payment method</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
+
+      <button type="submit" class="cta-btn">Place Order</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 ShopEasy. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Load cart total from localStorage
+    function updateCheckoutTotal() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      document.getElementById('checkout-total').textContent = `Total: $${total.toFixed(2)}`;
+      const badge = document.querySelector('.badge');
+      if (badge) {
+        const totalItems = cart.reduce((sum, item) => sum + Number(item.qty || 0), 0);
+        badge.textContent = totalItems;
+      }
+    }
+
+    updateCheckoutTotal();
+
+    // Handle form submission
+    document.getElementById('checkout-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Order placed successfully! Thank you for shopping with ShopEasy.");
+      localStorage.removeItem('cart'); // clear cart after checkout
+      window.location.href = "index.html"; // redirect to home
+    });
+  </script>
+</body>
+</html>

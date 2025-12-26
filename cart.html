@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Details - ShopEasy</title>
+  <title>Your Cart - ShopEasy</title>
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -19,13 +19,20 @@
       </ul>
     </nav>
     <div class="search-bar"><input type="text" placeholder="Search products..."></div>
-    <a href ="cart.html"><div class="cart">🛒 <span class="badge">0</span></div></a>
+    <div class="cart">🛒 <span class="badge">0</span></div>
     <div class="hamburger">☰</div>
   </header>
 
-  <!-- Product Detail -->
-  <section class="product-detail">
-    <div id="product-container"></div>
+  <!-- Cart Section -->
+  <section class="cart-page">
+    <h1>Your Shopping Cart</h1>
+    <div id="cart-items"></div>
+
+    <div class="cart-summary">
+      <p id="cart-total">Total: $0.00</p>
+      <button id="continueShopping" class="cta-btn">Continue Shopping</button>
+      <button id="checkoutBtn" class="cta-btn">Proceed to Checkout</button>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -33,9 +40,6 @@
     <p>&copy; 2025 ShopEasy. All rights reserved.</p>
   </footer>
 
-  <!-- Toast for feedback -->
-  <div id="addedToast" class="added-toast">Added to cart!</div>
-
-  <script src="scripts/product.js"></script>
+  <script src="scripts/cart.js"></script>
 </body>
 </html>
