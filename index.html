@@ -1,66 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Frontend</title>
-    <link rel="stylesheet" href="styles/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEasy - E-Commerce Frontend</title>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <header>
-  <!-- Logo -->
-  <div class="logo">
-    <h2>ShopEasy</h2>
-  </div>
+  <!-- Header -->
+  <header>
+    <!-- Logo -->
+    <div class="logo">
+      <h2>ShopEasy</h2>
+    </div>
 
-  <!-- Navigation Menu -->
-  <nav class="nav-links">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Products</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
+    <!-- Navigation -->
+    <nav class="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#product-grid">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
 
-  <!-- Search Bar -->
-  <div class="search-bar">
-    <input type="text" placeholder="Search products...">
-  </div>
+    <!-- Search -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search products...">
+    </div>
 
-  <!-- Cart Icon -->
-  <div class="cart">
-    🛒 <span class="badge">0</span>
-  </div>
+    <!-- Cart -->
+    <div class="cart">
+      🛒 <span class="badge">0</span>
+    </div>
 
-  <!-- Hamburger Menu -->
-  <div class="hamburger">
-    ☰
-  </div>
-</header>
-<section class="hero">
-  <div class="hero-content">
-    <h1>Biggest Sale of the Year!</h1>
-    <p>Up to 50% off on all products. Don’t miss out!</p>
-    <a href="#products" class="cta-btn">Shop Now</a>
-  </div>
-</section>
-<section class="product-grid">
-  <!-- Placeholder Product Cards -->
-  <div class="product-card">
-    <img src="https://via.placeholder.com/200" alt="Product Image">
-    <h3>Product Name</h3>
-    <p class="price">$99.99</p>
-    <button class="add-to-cart">Add to Cart</button>
-  </div>
+    <!-- Hamburger -->
+    <div class="hamburger">☰</div>
+  </header>
 
-  <div class="product-card">
-    <img src="https://via.placeholder.com/200" alt="Product Image">
-    <h3>Product Name</h3>
-    <p class="price">$79.99</p>
-    <button class="add-to-cart">Add to Cart</button>
-  </div>
-</section>
-    <script src="scripts/app.js"></script>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Biggest Sale of the Year!</h1>
+      <p>Up to 50% off on all products. Don’t miss out!</p>
+      <a href="#product-grid" class="cta-btn">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Product Grid -->
+  <section id="product-grid" class="product-grid">
+    <!-- Products will be injected here dynamically by app.js -->
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 ShopEasy. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/app.js"></script>
 </body>
 </html>

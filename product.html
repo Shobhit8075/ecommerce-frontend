@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - ShopEasy</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo"><h2>ShopEasy</h2></div>
+    <nav class="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#product-grid">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar"><input type="text" placeholder="Search products..."></div>
+    <div class="cart">🛒 <span class="badge">0</span></div>
+    <div class="hamburger">☰</div>
+  </header>
+
+  <!-- Product Detail -->
+  <section class="product-detail">
+    <div id="product-container"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 ShopEasy. All rights reserved.</p>
+  </footer>
+
+  <!-- Toast for feedback -->
+  <div id="addedToast" class="added-toast">Added to cart!</div>
+
+  <script src="scripts/product.js"></script>
+</body>
+</html>
